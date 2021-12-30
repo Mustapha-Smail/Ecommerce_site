@@ -12,7 +12,7 @@ const ProductScreen = () => {
 
     useEffect(() => {
         const fetchProducts = async () => {
-            const { data } = await axios.get(`/api/product/${params.id}`)
+            const { data } = await axios.get(`/api/products/${params.id}`)
             
             setProduct(data)
         }
@@ -34,7 +34,11 @@ const ProductScreen = () => {
                             <h3>{product.name}</h3>
                         </ListGroup.Item>
                         <ListGroup.Item>
-                            <Rating value={product.rating} text={`${product.numReviews} reviews`} />
+                            {product.rating}
+                            <Rating 
+                                value={product.rating} 
+                                text={`${product.numReviews} reviews`} 
+                            />
                         </ListGroup.Item>
                         <ListGroup.Item>
                             Price: ${product.price}
