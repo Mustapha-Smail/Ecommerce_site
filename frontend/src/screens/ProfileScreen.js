@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { Message, Loader } from '../components'
 
-import { getUserDetails, updateUserProfileDetails } from '../actions/userActions'
+import { getUserDetails, updateUserProfile } from '../actions/userActions'
+import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants'
 
 const ProfileScreen = () => {
     const [name, setName] = useState('')
@@ -30,21 +31,22 @@ const ProfileScreen = () => {
         if(!userInfo) {
             navigate('/login')
         } else {
-            if(!user.name) {
+            if(!user.name || success) {
+                dispatch({ type: USER_UPDATE_PROFILE_RESET })
                 dispatch(getUserDetails('profile'))
             } else {
                 setName(user.name)
                 setEmail(user.email)
             }
         }
-    }, [dispatch, navigate, user.email, user.name, userInfo])
+    }, [dispatch, navigate, success, user.email, user.name, userInfo])
     
     const submitHandler = (e) => {
         e.preventDefault()
         if(password !== confirmPassword) {
             setMessage('Passwords do not match')
         }else {
-            dispatch(updateUserProfileDetails({ id: user._id, name, email, password }))
+            dispatch(updateUserProfile({ id: user._id, name, email, password }))
         }
 
     }
