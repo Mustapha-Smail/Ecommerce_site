@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
 import { Header, Footer } from './components'
-import { Home, Product, Cart, Login, Register } from './screens'
+import { Home, Product, Cart, Login, Register, Profile } from './screens'
 
 const App = () => {
   return (
@@ -22,6 +22,7 @@ const App = () => {
             
             <Route path='/login' element={<Login />} /> 
             <Route path='/register' element={<Register />} /> 
+            <Route path='/profile' element={<Profile />} /> 
 
           </Routes>
         </Container>
