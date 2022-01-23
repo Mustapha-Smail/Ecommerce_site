@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
 import { Header, Footer } from './components'
-import { Home, Product, Cart, Login, Register, Profile, Shipping, Payment, PlaceOrder } from './screens'
+import { Home, Product, Cart, Login, Register, Profile, Shipping, Payment, PlaceOrder, Order } from './screens'
 
 const App = () => {
   return (
@@ -12,6 +12,7 @@ const App = () => {
         <Container>
           <Routes>
             
+            <Route path='/order/:id' element={<Order />} /> 
             <Route path='/placeorder' element={<PlaceOrder />} /> 
             <Route path='/payment' element={<Payment />} /> 
             <Route path='/shipping' element={<Shipping />} /> 
